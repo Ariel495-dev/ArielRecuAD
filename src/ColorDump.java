@@ -11,7 +11,7 @@ public class ColorDump {
     public void volcarCSV() {
         try {
             Connection conn = DriverManager.getConnection("jdbc:sqlite:recuperacionT1.sqlite3");
-            FileWriter writer = new FileWriter("dump.csv");
+            FileWriter writer = new FileWriter("dump.sql");
 
             Statement stmtUsuarios = conn.createStatement();
             ResultSet usuarios = stmtUsuarios.executeQuery("SELECT id, name FROM Usuario");
@@ -42,7 +42,7 @@ public class ColorDump {
             writer.flush();
             writer.close();
             conn.close();
-            System.out.println("dump.csv generado correctamente.");
+            System.out.println("dump.sql generado correctamente.");
 
         } catch (SQLException | IOException e) {
             throw new RuntimeException(e);
